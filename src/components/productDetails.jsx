@@ -15,7 +15,7 @@ const ProductDetails = () => {
       <h4>{params.productId}</h4>
       <button
         onClick={() => {
-          navigate("/products", { state: params.productId });
+          navigate("/savedProduct", { state: params });
         }}
       >
         Save
