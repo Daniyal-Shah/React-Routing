@@ -1,24 +1,33 @@
 
 import './App.css';
-import {Route, Routes, Switch} from "react-router-dom"
-import NavBar from "./components/navbar";
-import Products from "./components/products";
-import Dashboard from "./components/admin/dashboard";
-import Posts from "./components/posts";
+import Products from './components/products';
+import Dashboard from './components/admin/dashboard';
+import Posts from './components/posts';
+import {BrowserRouter as Router, Routes, Route, Link, Navigate, Outlet}  from "react-router-dom";
 import Home from './components/home';
+import NavBar from './components/navbar';
+import NotFound from './components/notFound';
+import ProductDetails from './components/productDetails';
+
 
 function App() {
   return (
     <div>
-    {/* <NavBar/>
+    <NavBar/>
+
     <div className="content">
-    <Routes>
-      <Route path="/products" component={Products}  />
-      <Route path="/admin" component={Dashboard}  />
-      <Route path="/posts" component={Posts}  />
-      <Route path="/" component={Home}  />
-    </Routes>
-    </div> */}
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/products" element={<Products/>}>
+          <Route index element={<main style={{ padding: "1rem" }}><p>Select an invoice</p></main>}/>
+          <Route path=":productId" element={<ProductDetails />} />
+        </Route>
+        <Route path="/admin" element={<Dashboard/>}  />
+        <Route path="/posts" element={<Posts/>}  />
+        <Route path="*" element={<NotFound/>} />
+      </Routes>
+
+    </div>
     </div>
   );
 }
